@@ -1,0 +1,219 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body{
+    color: #ffffff;
+    background-image: url(../imagem/fundo.webp);
+    background-size: 100%;
+    margin: 0;
+    padding: 0;
+}
+header{
+    z-index: 1000;
+    position: fixed;
+    box-shadow: 0px 10px 15px rgb(8, 185, 144);
+    background-color: rgb(9, 133, 65);
+    padding: 10px;
+    transition: 0.3s;
+    width: 100%;
+
+    cursor: pointer;
+}
+header ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+}
+
+header li{
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    display: block;
+    transition: 0.3s;
+}
+header li:hover{
+    font-size: 30px;
+    
+}
+#inicio{
+    padding-top: 50px;
+    text-align: center;
+}
+h1 h2 {
+    text-align: center;
+}
+
+.form {
+
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+main{
+    background-image: linear-gradient(to right, rgba(20,0,30,0.6), rgba(0, 0, 0, 0.6),rgba(20,0,30,0.6));
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    color: white;
+    position: absolute;
+    height: 100%;
+    width: 97%;
+    position: fixed;
+    overflow: auto;
+}
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(9, 133, 65);
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
+#htmlback{
+   
+    background-color: #6a088e;
+    box-shadow: 0px 7px 15px #069a3a;
+    align-self: center;
+    padding: 2%;
+    width: 60%;
+}
+#htmlback h2{
+    text-align: center;
+
+}
+#htmlback div{
+    gap: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#htmlback p{
+    margin-top: 30px;
+    text-align: justify;
+    width: 130px;
+}
+
+#htmlback img{
+    margin-left: 80px;
+    width: 100px;
+    height: 100px;
+}
+
+#sobretit{
+    text-align: center;
+}
+.opa{
+
+    position: absolute;
+    left: 900px;
+}
+#button {
+    background-color: rgb(60, 143, 152);
+    color:#010000;
+    width: 30%;
+    height: 30%;
+    border-radius: 9%;
+    margin-left: 280px;
+    cursor: pointer;
+}
+#htmlback:hover{
+
+    
+    background-color: #6a088e;
+    box-shadow: 0px 7px 50px #e8129a;
+    margin-left: 20%;
+    margin-right: 20%;
+    transition: 2.5s ;
+    
+}
+
+/*#htmlback
+{
+        opacity:0.5;
+        transition: 1s;
+}
+#htmlback:hover
+{       
+        opacity:1;
+        transition: 1s;
+}
+
+/*#htmlback:hover
+{
+        -xpedu-transform: rotatez(-30deg);
+        -ms-transform: rotateZ(-30deg);
+        transform: rotateZ(-360deg);
+        
+    }*/
+
+#htmlback{
+
+    height: 250px;
+    width: 350px;
+}
+#sobretit {
+    margin-top: 10px;
+    width: 300px;
+    text-align: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+#sobre {
+    margin-left: 30px;
+    width: 170px;
+}
+
+.fale{
+    text-align: center;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+#contato h2{
+    text-align: center;
+
+}
+#contato form {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#contato div{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+form {
+
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#contato {
+    
+    margin-right: 200px;
+    margin-left: 200px;
+    margin-top: 150px;
+}
+
+#contato, div .divinho{
+    margin-bottom: 150px;
+    background-color: rgba(114, 122, 129, 0.756);
+    border-radius: 10%;]
+    margin-left: ;
+}
