@@ -16,7 +16,7 @@ header{
     z-index: 1000;
     position: fixed;
     box-shadow: 0px 10px 15px rgb(8, 185, 144);
-    background-color: rgb(9, 133, 65);
+    background-color: rgb(8, 143, 69);
     padding: 10px;
     transition: 0.3s;
     width: 100%;
@@ -188,23 +188,27 @@ form{
 
 #contato{
     margin-right: 200px;
-    margin-left: 200px;
+    margin-left: 400px;
     margin-top: 150px;
+    padding-top: 50px;
+    height: 200px;
+    width: 500px;
 }
 
 #contato, div.divinho{
     margin-bottom: 150px;
     background-color: rgba(114, 122, 129, 0.756);
     border-radius: 10%;
+    justify-content: center;
 }
 
 #button{
     background-color: rgb(60, 143, 152);
     color:#010000;
     width: 30%;
-    height: 30%;
+    height: 20%;
     border-radius: 9%;
-    margin-left: 280px;
+    margin-left: 180px;
     cursor: pointer;
 }
 
