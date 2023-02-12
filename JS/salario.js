@@ -2,21 +2,21 @@ var salarioBruto = document.getElementById('salario').value
 var dependentes = document.getElementById('dependente').value
 
 // Esta parte se refere a fazer o calculo do inss de acordo com o sálario colocado 
-switch(salarioBruto){
+switch(true){
     case salarioBruto <= 1212.00:
-        var inss = 1212*0.075
+        var inss = 1212.00 * 0.075
         break
     case salarioBruto <= 2427.35:
-        var inss = 2427.35*0.09
+        var inss = 2427.35 * 0.09
         break
     case salarioBruto <= 3641.03:
-        var inss = 3641.03*0.12
+        var inss = 3641.03 * 0.12
         break
     case salarioBruto <= 7087.22:
-        var inss = 7087.22*0.14
+        var inss = 7087.22 * 0.14
         break
     default:
-        var inss = 7087.22*0.14
+        var inss = 7087.22 * 0.14
         break
 }
 
@@ -26,7 +26,7 @@ if(dependentes != 0){
 }
 
 // Esta parte é para calcular o IRRF (Imposto)
-switch(salarioBaseIR){
+switch(true){
     case salarioBaseIR <= 1903.98:
         var irrf = 0
         break
@@ -68,3 +68,13 @@ function mostrar(){
 function ocultar(){
     document.getElementById("calculo").style.display = "none";
 }
+
+/* teste pra ver se a lógica esta correta
+
+var salarioLiquido = salarioBruto - inss - irrf
+
+console.log("O salário é de " + salarioBruto)
+console.log("Pagará o inss no valor de " + inss)
+console.log("O valor do salário base é de  " + salarioBaseIR)
+console.log("E o valor de imposto é de " + irrf)
+console.log("Resultando no salário liquido de " + salarioLiquido) */
