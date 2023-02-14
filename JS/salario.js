@@ -1,8 +1,47 @@
-var salarioBruto = document.getElementById('salario').value
-var dependentes = document.getElementById('dependente').value
+    var button = document.getElementById("button");
+    const one =  document.getElementById("card2");
+    var input = document.querySelector("#name");
+    var texto = input.value;
+    console.log(texto);
+    console.log(card);
+    console.log(button);
 
-// Esta parte se refere a fazer o calculo do inss de acordo com o sálario colocado 
-switch(true){
+    button.addEventListener("click" , function() {
+
+    var b = document.getElementsByTagName("body")[0]
+    b.style = "background-image: url(https://thumbs.gfycat.com/ElementaryAnimatedBarebirdbat-size_restricted.gif)"
+    var card = document.getElementById("card");
+    if (card.style.display === "block") {
+
+    } else {
+    
+        one.append(card); //adicionei append para mover a card 1 para o lugar da suposta card2
+    }
+
+    var card1 = document.getElementById("card1")
+    if (card.style.display === "") {
+        card1.style.display = "block";
+    } else {
+
+        card1.style.display = "none";
+    }
+    //tirei a var card2 para usar a mesma na primeira instancia
+    var botão = document.getElementById("button")
+    if (card1.style.display === "block") {
+        botão.style.display = "none";
+    } else {
+
+        botão.style.display = "none";
+    }
+    });
+
+
+
+    var salarioBruto = document.getElementById('salario').value
+    var dependentes = document.getElementById('dependente').value
+
+    // Esta parte se refere a fazer o calculo do inss de acordo com o sálario colocado 
+    switch(true){
     case salarioBruto <= 1212.00:
         var inss = 1212.00 * 0.075
         break
