@@ -1,16 +1,13 @@
 var button = document.getElementById("button");
 const one =  document.getElementById("card2");
-var input = document.querySelector("#name");
-var texto = input.value;
-console.log(texto);
 console.log(card);
 console.log(button);
 
 //-------- Esta parte é para fazer aparecer e desaparecer o card com as infos da folha de pagamento --------//
 button.addEventListener("click" , function() {
-
+    
     var b = document.getElementsByTagName("body")[0]
-    b.style = "background-image: url(https://thumbs.gfycat.com/ElementaryAnimatedBarebirdbat-size_restricted.gif)"
+    b.style = "background-image:url(https://thumbs.gfycat.com/ElementaryAnimatedBarebirdbat-size_restricted.gif)"
     var card = document.getElementById("card");
     if (card.style.display === "block") {
     } else {
@@ -34,31 +31,32 @@ button.addEventListener("click" , function() {
     
     //----------------------------- Aqui já entra a parte dos calculos ------------------------------//
 
-    var salarioBruto = Number(document.getElementById('salario').value)
-    var dependentes = Number(document.getElementById('depen').value)
+    var salarioBruto = document.getElementById('salario').value
+    var dependentes = document.getElementById('depen').value
+
+    var inss = 0;
     
     // Esta parte se refere a fazer o calculo do inss de acordo com o sálario colocado 
     switch(true){
         case salarioBruto <= 1212.00:
-            var inss = 1212.00 * 0.075
+            inss = Math.round(1212.00 * 0.075 * 100) / 100 
             break
         case salarioBruto <= 2427.35:
-            var inss = 2427.35 * 0.09
+            inss = Math.round(2427.35 * 0.09 * 100) / 100 
             break
         case salarioBruto <= 3641.03:
-            var inss = 3641.03 * 0.12
+            inss = Math.round(3641.03 * 0.12 * 100) / 100 
             break
         case salarioBruto <= 7087.22:
-            var inss = 7087.22 * 0.14
+            inss = Math.round(7087.22 * 0.14 * 100) / 100 
             break
         default:
-            var inss = 7087.22 * 0.14
+            inss = Math.round(7087.22 * 0.14 * 100) / 100 
         break
     }
-
     // Aqui é para fazer o calculo de dependentes (filhos e tals)
     if(dependentes != 0){
-        var salarioBaseIR = salarioBruto - inss - dependentes * 189.59
+        var salarioBaseIR = salarioBruto - inss - (dependentes * 189.59)
     }
 
     // Esta parte é para calcular o IRRF (Imposto)
@@ -66,65 +64,43 @@ button.addEventListener("click" , function() {
         case salarioBaseIR <= 1903.98:
             var irrf = 0
             break
-        case salarioBaseIR <= 2826.65:
-            var irrf = (salarioBaseIR / 100 * 7.5) - 142.80
+        case salarioBaseIR <= 2826.65: 
+            var irrf = Math.round((salarioBaseIR / 100 * 7.5 - 142.80) * 100) / 100
             break
         case salarioBaseIR <= 3751.05:
-            var irrf = (salarioBaseIR / 100 * 15) - 354.80
+            var irrf = Math.round((salarioBaseIR / 100 * 15  - 354.80) * 100) / 100 
             break
         case salarioBaseIR <= 4664.68:
-            var irrf = (salarioBaseIR / 100 * 22.5) - 636.13
+            var irrf = Math.round((salarioBaseIR / 100 * 22.5 - 636.13) * 100) / 100 
             break
         case salarioBaseIR > 4664.68:
-            var irrf = (salarioBaseIR / 100 * 27.5) - 869.36
+            var irrf = Math.round((salarioBaseIR / 100 * 27.5  - 869.36) * 100) / 100 
             break
         default:
         break
     } 
-});  
 
-/* ------ Aqui a intenção é conseguir saber se foi selecionado que a pessoa precisa de vale transporte --------
------------------------ para assim ser feito o calculo caso ela tenha solicitado o vale ---------------------*/
-function checkbox(){
+    //--- ------ tentativa de mandar os valores dessas variáveis para o html para ser exibida no site ----------//
+    document.getElementById('salarioT').innerHTML = salarioBruto
+    document.getElementById('depen').innerHTML = dependentes
+    document.getElementById('colaboracao').innerHTML = inss
+    document.getElementById('imposto').innerHTML = irrf
+    document.getElementById('base').innerHTML = salarioBaseIR
+    document.getElementById('liquido').innerHTML = salarioLiquido
+
+    /* ------ Aqui a intenção é conseguir saber se foi selecionado que a pessoa precisa de vale transporte --------
+    ----------------------- para assim ser feito o calculo caso ela tenha solicitado o vale ---------------------*/
+    var vale = checkbox(salarioBruto)
+    document.getElementById('transporte').innerHTML = vale
+    var salarioLiquido = Math.round((salarioBruto - inss - irrf - vale) * 100) / 100
+    document.getElementById('liquido').innerHTML = salarioLiquido
+});
+
+function checkbox(salarioBruto){
     let checkbox = document.getElementById('checkbox');
+    var vale = 0
     if(checkbox.checked) {
-        var vale = salarioBruto*0.6 
+        vale = Math.round((salarioBruto * 0.06 ) * 100) / 100
     }
+    return vale;
 }
-    
-//--- ------ tentativa de mandar os valores dessas variáveis para o html para ser exibida no site ----------//
-document.getElementById('salario').innerHTML = salarioBruto
-document.getElementById('depen').innerHTML = dependentes
-document.getElementById('colaboracao').innerHTML = inss
-document.getElementById('imposto').innerHTML = irrf
-document.getElementById('base').innerHTML = salarioBaseIR
-document.getElementById('transporte').innerHTML = vale
-
-var salarioLiquido = salarioBruto - inss - irrf
-document.getElementById('liquido').innerHTML = salarioLiquido
-
-
-/* Esta parte o professor tinha mostrado o código dele pra gente ver como fazer sumir e 
-aparecer aquele outro bloco/div com a tabela de info, dai só copiei aqui o código dele //
-
-var btEnviar = document.getElementById("button")
-btEnviar.addEventListener("click", mostrar)
-
-var btReset = document.getElementById("resetar")
-btReset.addEventListener("click", ocultar)
-
-function mostrar(){
-    document.getElementById("calculo").style.display = "block";
-}
-
-function ocultar(){
-    document.getElementById("calculo").style.display = "none";
-}
-
-//-------------------------- teste pra ver se a lógica dos calculos está correta ---------------------------//
-
-console.log("O salário é de " + salarioBruto)
-console.log("Pagará o inss no valor de " + inss)
-console.log("O valor do salário base é de  " + salarioBaseIR)
-console.log("E o valor de imposto é de " + irrf)
-console.log("Resultando no salário liquido de " + salarioLiquido) */
