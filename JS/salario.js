@@ -5,7 +5,7 @@ console.log(button);
 
 //-------- Esta parte é para fazer aparecer e desaparecer o card com as infos da folha de pagamento --------//
 button.addEventListener("click" , function() {
-    
+
     var b = document.getElementsByTagName("body")[0]
     b.style = "background-image:url(https://thumbs.gfycat.com/ElementaryAnimatedBarebirdbat-size_restricted.gif)"
     var card = document.getElementById("card");
@@ -22,20 +22,13 @@ button.addEventListener("click" , function() {
     }
 
     //tirei a var card2 para usar a mesma na primeira instancia
-    var botão = document.getElementById("button")
-    if (card1.style.display === "block") {
-        botão.style.display = "none";
-    } else {
-        botão.style.display = "none";
-    }
-    
+
     //----------------------------- Aqui já entra a parte dos calculos ------------------------------//
 
     var salarioBruto = document.getElementById('salario').value
     var dependentes = document.getElementById('depen').value
-
     var inss = 0;
-    
+
     // Esta parte se refere a fazer o calculo do inss de acordo com o sálario colocado 
     switch(true){
         case salarioBruto <= 1212.00:
@@ -54,9 +47,12 @@ button.addEventListener("click" , function() {
             inss = Math.round(7087.22 * 0.14 * 100) / 100 
         break
     }
+
     // Aqui é para fazer o calculo de dependentes (filhos e tals)
     if(dependentes != 0){
         var salarioBaseIR = salarioBruto - inss - (dependentes * 189.59)
+    } else {
+        var salarioBaseIR = salarioBruto - inss
     }
 
     // Esta parte é para calcular o IRRF (Imposto)
@@ -94,13 +90,26 @@ button.addEventListener("click" , function() {
     document.getElementById('transporte').innerHTML = vale
     var salarioLiquido = Math.round((salarioBruto - inss - irrf - vale) * 100) / 100
     document.getElementById('liquido').innerHTML = salarioLiquido
+
 });
 
 function checkbox(salarioBruto){
     let checkbox = document.getElementById('checkbox');
-    var vale = 0
+    var vale = ""
     if(checkbox.checked) {
         vale = Math.round((salarioBruto * 0.06 ) * 100) / 100
     }
     return vale;
 }
+
+var btnLimpar = document.getElementById("reset1");
+
+btnLimpar.addEventListener("click", function() {
+   salario.value = "";
+   depen.value = "";
+   salarioT.innerHTML= "";
+   colaboracao.innerHTML = "";
+   imposto.innerHTML = "";
+   base.innerHTML = "";
+   liquido.innerHTML = "";
+});
